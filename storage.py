@@ -3,7 +3,3 @@ def load():
 
 def save():
     pass
-
-
-load()
-save()
