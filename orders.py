@@ -3,7 +3,6 @@ from typing import TypedDict, Optional
 
 STATUSES = ('new', 'in_progress', 'done', 'canceled')
 
-orders: list[Order] = []
 
 class Order(TypedDict):
     id: int
@@ -15,6 +14,8 @@ class Order(TypedDict):
     created_at: date
     due: Optional[str]
     closed_at: date
+
+orders: list[Order] = []
 
 
 def create_order(order_id: int, order_title: str, order_amount: float, order_email: str, order_status: str,
