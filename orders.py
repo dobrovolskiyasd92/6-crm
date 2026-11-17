@@ -47,7 +47,7 @@ def remove_order(orders_list, order_id: int):
     for order in orders_list:
         idx = orders_list.index(order)
         if order['id'] == order_id:
-            orders_list.remove(idx)
+            del orders_list[idx]
 
 def _print_order(order):
     print(f'{'=' * 20}')
