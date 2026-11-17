@@ -33,8 +33,9 @@ def create_order(order_id: int, order_title: str, order_amount: float, order_ema
     }
 
     orders.append(order)
+    return order
 
-def list_orders(orders_list, order_id: int):
+def list_orders(orders_list):
    for order in orders_list:
        _print_order(order)
 
