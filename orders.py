@@ -3,6 +3,8 @@ from typing import TypedDict, Optional
 
 STATUSES = ('new', 'in_progress', 'done', 'canceled')
 
+orders: list[Order] = []
+
 class Order(TypedDict):
     id: int
     title: str
@@ -29,10 +31,10 @@ def create_order(order_id: int, order_title: str, order_amount: float, order_ema
         'closed_at': order_closed_at
     }
 
-    return order
+    orders.append(order)
 
-def list_orders(orders, order_id: int):
-   for order in orders:
+def list_orders(orders_list, order_id: int):
+   for order in orders_list:
        _print_order(order)
 
 def edit_order(order: Order, order_title: str, order_amount: float, order_email: str):
@@ -41,10 +43,11 @@ def edit_order(order: Order, order_title: str, order_amount: float, order_email:
     order['email'] = order_email
     return order
 
-def remove_order(orders, order_id: int):
-    for order in orders:
+def remove_order(orders_list, order_id: int):
+    for order in orders_list:
+        idx = orders_list.index(order)
         if order['id'] == order_id:
-            orders.remove(order)
+            orders_list.remove(idx)
 
 def _print_order(order):
     print(f'{'=' * 20}')
