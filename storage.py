@@ -13,6 +13,7 @@ def load(path):
 
     except json.decoder.JSONDecodeError:
         print('Invalid JSON')
+        return []
 
     orders: list[Order] = []
     max_id = 0
@@ -29,10 +30,14 @@ def load(path):
                 'due': item["due"],
                 'closed_at': item["closed_at"],
             }
+            orders.append(order)
         except Exception as e:
             print(e)
 
     return orders, max_id + 1
+
+
+
 
 def save(path:str, orders: list[Order]):
     data = {
