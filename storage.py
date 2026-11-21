@@ -34,7 +34,7 @@ def load(path):
         except Exception as e:
             print(e)
 
-    return orders, max_id + 1
+    return orders
 
 
 
