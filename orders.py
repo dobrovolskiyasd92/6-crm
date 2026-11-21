@@ -46,13 +46,15 @@ def edit_order(order: Order, order_title: str, order_amount: float, order_email:
     return order
 
 def remove_order(orders_list, order_id: int):
-    for order in orders_list:
-        idx = orders_list.index(order)
+    for idx, order in enumerate(orders_list):
         if order['id'] == order_id:
             del orders_list[idx]
+            return True
+    return False  # заказ с таким id не найден
 
 def _print_order(order):
     print(f'{'=' * 20}')
+    print(order['id'])
     print(order['title'])
     print(order['amount'])
     print(order['email'])
