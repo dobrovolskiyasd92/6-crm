@@ -7,6 +7,7 @@ def load(path):
     try:
         with open(path, 'r', encoding='utf-8') as f:
             raw_data = json.load(f)
+            # print(raw_data)
     except FileNotFoundError:
         print('File not found')
         return []
@@ -16,7 +17,6 @@ def load(path):
         return []
 
     orders: list[Order] = []
-    max_id = 0
     for item in raw_data.get("orders", []):
         try:
             order: Order = {
@@ -37,9 +37,7 @@ def load(path):
     return orders
 
 
-
-
-def save(path:str, orders: list[Order]):
+def save(path: str, orders: list[Order]):
     data = {
         'orders': [
             {
@@ -56,6 +54,8 @@ def save(path:str, orders: list[Order]):
             for o in orders
         ]
     }
-    with open(path, 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, indent=4)
-
+    try:
+        with open(path, 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=4)
+    except FileNotFoundError:
+        print('File not found')
