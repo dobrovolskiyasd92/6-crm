@@ -1,0 +1,30 @@
+{
+    "orders": [
+        {
+            "id": 1,
+            "title": "New order1",
+            "amount": 119.99,
+            "email": "dobrovolskiyas@vniitf.ru",
+            "status": "new",
+            "tags": [
+                "tag"
+            ],
+            "created_at": "2026-11-01",
+            "due": "2026-11-01",
+            "closed_at": "2026-11-01"
+        },
+        {
+            "id": 2,
+            "title": "New order2",
+            "amount": 549.99,
+            "email": "dobrovolskiyas@vniitf.ru",
+            "status": "new",
+            "tags": [
+                "tag"
+            ],
+            "created_at": "2026-11-01",
+            "due": "2026-11-10",
+            "closed_at": "2026-11-10"
+        }
+    ]
+}
