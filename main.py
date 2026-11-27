@@ -1,37 +1,32 @@
+from cmds.help import help_command
 from cmds.add import add_order
-from cmds.list import list_orders
-from orders import edit_order
-from utils.storage import save, load
 
 
 def main():
-    file_path = 'orders.json'
-    orders = load(file_path)
+    orders = []
     print("Orders manager. Input 'help' for help")
-    try:
-
-        while True:
-            raw_string = input("> ").strip().lower()
+    while True:
+        try:
+            raw_string = input("> ").strip()
             parts = raw_string.split()
             cmd, args = parts[0], parts[1:]
+
             match cmd:
                 case "help":
-                    pass
+                    help_command()
                 case "list":
-                    list_orders(orders)
-                    # print(orders)
+                    print(orders)
                 case "add":
                     add_order(orders, args)
                 case "remove":
                     pass
                 case "edit":
-                    edit_order(orders, args)
+                    pass
                 case "tag":
                     pass
                 case 'status':
                     pass
-                case 'quit':
-                    save(file_path, orders)
+                case 'exit':
                     print("Goodbye!")
                     break
                 case _:
@@ -39,10 +34,11 @@ def main():
 
 
 
-    except KeyboardInterrupt:
-        print("Exiting...")
-    except Exception as e:
-        print(f"[ERROR]: {e}")
+        except KeyboardInterrupt:
+            print("Exiting...")
+            break
+        except Exception as e:
+            print(f"[ERROR]: {e}")
 
 
 if __name__ == "__main__":
