@@ -1,5 +1,7 @@
 """Module add order"""
 import datetime
+from uuid import uuid4
+
 from orders import Order, make_order
 from utils.args import parse_args
 
@@ -17,8 +19,6 @@ def add_order(orders: list[Order], args: list):
     if not check_keys_set.issubset(VALID_ADD_KEYS):
         raise Exception("Invalid command. Use ...")
 
-    if not raw.get('id'):
-        raise Exception("No id")
     if not raw.get('title'):
         raise Exception("No amount")
     if not raw.get('amount'):
@@ -26,7 +26,7 @@ def add_order(orders: list[Order], args: list):
     if not raw.get('email'):
         raise Exception("No email")
 
-    id_ = raw.get('id')
+    id_ = uuid4()
     title = raw.get('title')
     amount = raw.get('amount')
     email = raw.get('email')

@@ -1,5 +1,7 @@
 from datetime import date
 from typing import TypedDict, Optional
+from uuid import UUID
+
 from utils.validators import is_valid_email
 
 from utils.args import parse_date
@@ -9,7 +11,7 @@ TODAY = date.today()
 
 
 class Order(TypedDict):
-    id: int
+    id: UUID
     title: str
     amount: float
     email: str
@@ -21,7 +23,7 @@ class Order(TypedDict):
 
 
 def make_order(
-        id_: int,
+        id_: UUID,
         title: str,
         amount: float,
         email: str,
@@ -37,7 +39,7 @@ def make_order(
         raise ValueError(f'Invalid email {email}')
 
     order: Order = {
-        'id': int(id_),
+        'id': str(id_),
         'title': title,
         'amount': float(amount),
         'email': email,
